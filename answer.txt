@@ -1,0 +1,131 @@
+A1
+babu@localhost:~>mkdir level0-test
+babu@localhost:~>cd level0-test/
+babu@localhost:~/level0-test>touch log.txt
+babu@localhost:~/level0-test>echo "hello level 0" > log.txt 
+babu@localhost:~/level0-test>grep "hello" log.txt 
+hello level 0
+A2
+babu@localhost:~/level0-test>ls -l
+total 4
+-rw-r--r--. 1 babu babu 14 Oct  5 19:35 log.txt
+Here 'rw-' means that the owner has read and right permission. But do not have execute permission.
+A3
+Cat - It is used to see the file content directly onto the terminal. It is prefered to use for small text file.
+less - It is used to see the file content page by page. It's like a viewer. It is prefered for long text file. Exit by pressing q.
+B1
+babu@localhost:~/level0-test>code .
+Inside vscode ran ctrl+` to open the inbuilt terminal.
+babu@localhost:~/level0-test>touch notes.md
+B2
+VS Code Integrated terminal and System terminal, both work similarly. In my current knowledge, I think I can do same work in the both terminal.
+C1
+babu@localhost:~/level0-test>mkdir git-repo
+babu@localhost:~/level0-test>cd git-repo/
+babu@localhost:~/level0-test/git-repo>git init
+hint: Using 'master' as the name for the initial branch. This default branch name
+hint: will change to "main" in Git 3.0. To configure the initial branch name
+hint: to use in all of your new repositories, which will suppress this warning,
+hint: call:
+hint:
+hint:   git config --global init.defaultBranch <name>
+hint:
+hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+hint: 'development'. The just-created branch can be renamed via this command:
+hint:
+hint:   git branch -m <name>
+hint:
+hint: Disable this message with "git config set advice.defaultBranchName false"
+Initialized empty Git repository in /home/babu/level0-test/git-repo/.git/
+babu@localhost:~/level0-test/git-repo>echo "# This is the heading" > git-file.txt
+babu@localhost:~/level0-test/git-repo>git status
+On branch master
+
+No commits yet
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        git-file.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+babu@localhost:~/level0-test/git-repo>git add git-file.txt
+babu@localhost:~/level0-test/git-repo>git commit -m "Add heading"
+[master (root-commit) d6f7e21] Add heading
+ 1 file changed, 1 insertion(+)
+ create mode 100644 git-file.txt
+babu@localhost:~/level0-test/git-repo>git branch
+babu@localhost:~/level0-test/git-repo>git branch -M main
+babu@localhost:~/level0-test/git-repo>git branch
+babu@localhost:~/level0-test/git-repo>git checkout -b feature1
+Switched to a new branch 'feature1'
+babu@localhost:~/level0-test/git-repo>ls
+git-file.txt
+babu@localhost:~/level0-test/git-repo>echo "**This is a new (feature)**" >> git-file.txt
+babu@localhost:~/level0-test/git-repo>git add git-file.txt
+babu@localhost:~/level0-test/git-repo>git commit -m "Add new feature"
+[feature1 fc8be03] Add new feature
+ 1 file changed, 1 insertion(+)
+babu@localhost:~/level0-test/git-repo>git status
+On branch feature1
+nothing to commit, working tree clean
+babu@localhost:~/level0-test/git-repo>git checkout main
+Switched to branch 'main'
+babu@localhost:~/level0-test/git-repo>git diff feature1
+babu@localhost:~/level0-test/git-repo>git merge feature1
+Updating d6f7e21..fc8be03
+Fast-forward
+ git-file.txt | 1 +
+ 1 file changed, 1 insertion(+)
+babu@localhost:~/level0-test/git-repo>git status
+On branch main
+nothing to commit, working tree clean
+babu@localhost:~/level0-test/git-repo>git log
+commit fc************** (HEAD -> main, feature1)
+Author: ZahirLab <zahurulbabudhr@gmail.com>
+Date:   Mon Oct 5 20:39:22 2026 +0600
+
+    Add new feature
+
+commit d6**************
+Author: ZahirLab <zahurulbabudhr@gmail.com>
+Date:   Mon Oct 5 20:32:24 2026 +0600
+
+    Add heading
+C2
+babu@localhost:~/level0-test/git-repo>git checkout feature1
+Switched to branch 'feature1'
+babu@localhost:~/level0-test/git-repo>echo "Add a new button" >> git-file.txt
+babu@localhost:~/level0-test/git-repo>git add .
+babu@localhost:~/level0-test/git-repo>git commit -m "Add button"
+[feature1 b96cd5e] Add button
+ 1 file changed, 1 insertion(+)
+babu@localhost:~/level0-test/git-repo>git checkout main
+Switched to branch 'main'
+babu@localhost:~/level0-test/git-repo>echo "Add a new Dropdown" >> git-file.tx
+t
+babu@localhost:~/level0-test/git-repo>git add .
+babu@localhost:~/level0-test/git-repo>git commit -m "Add Dropdown"
+[main 41d6188] Add Dropdown
+ 1 file changed, 1 insertion(+)
+babu@localhost:~/level0-test/git-repo>git diff feature1
+babu@localhost:~/level0-test/git-repo>git merge feature1
+Auto-merging git-file.txt
+CONFLICT (content): Merge conflict in git-file.txt
+Automatic merge failed; fix conflicts and then commit the result.
+babu@localhost:~/level0-test/git-repo>git merge --abort
+babu@localhost:~/level0-test/git-repo>git reflog
+babu@localhost:~/level0-test/git-repo>
+C3
+I am not certain about why they exist seperately. I think having this two option gives developer more flexibility to manage their code.
+D1
+https://github.com/ZahirLab/claude-test-repo.git
+D2
+Creating pull request instead of push to the main branch gives developer of main branch to examine the code before they merge with that pull request. Developer can accept, reject, comment on a pull request.
+E1
+After entering a URL, browser start searching for the ip address corresponded to the URL on DNS. If URL is valid then it will get the IP address and locate the server for this IP. Then it will send request to that server and if the server has permission, it will sent the requested content back to the browser and the browser will show them.
+E2
+HTTP - Hypertext transfer protocol, HTTPS - Hypertext transfer protocol secure. If I communicate with server using HTTP, other people like hackers can tap into my communication and can see everything without any encryption.
+If I use HTTPS, hacker can still tap into my communication but they will not understand as the communication will be encrypted.
+F1
+live site link - https://zahirlab.github.io/ZahirLab/
+repo link - https://github.com/ZahirLab/ZahirLab
